@@ -3,17 +3,17 @@ import useScript from 'react-script-hook';
 
 import { ArgyleCreateOptions, ArgyleInstance } from '../argyle';
 
-const ARGYLE_LINK_DEFAULT_URL = 'https://plugin.argyle.io/argyle.web.v3.js';
+const DEFAULT_ARGYLE_LINK_URL = 'https://plugin.argyle.io/argyle.web.v3.js';
 
 export const useArgyleLink = (config: ArgyleCreateOptions) => {
-  const [loading, error] = useScript({ src: config.apiHost || ARGYLE_LINK_DEFAULT_URL, checkForExisting: true });
+  const [loading, error] = useScript({ src: DEFAULT_ARGYLE_LINK_URL, checkForExisting: true });
   const [argyle, setArgyle] = useState<ArgyleInstance | null>(null);
   const emptyCallback = () => {};
 
   useEffect(() => {
     if (loading || !window.Argyle || error) {
       if (error) {
-        console.log(error);
+        console.error(error);
       }
       return;
     }
