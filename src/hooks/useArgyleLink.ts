@@ -29,7 +29,7 @@ export const useArgyleLink = (config: ArgyleCreateOptions) => {
     setArgyle(instance);
 
     return () => instance.close();
-  }, [loading, error, config]);
+  }, [loading, error, config.pluginKey]);
 
   return {
     error,
